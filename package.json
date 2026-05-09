@@ -1,5 +1,6 @@
 {
-  "name": "functions",
+  "name": "factur-ar-functions",
+  "version": "2.0.0",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
