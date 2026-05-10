@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Customer, CONDICION_IVA_OPTIONS } from '../types/customer'
 import { cn } from '../lib/utils'
 
@@ -76,6 +76,8 @@ function ActionButton({ onClick, icon, label, variant = 'default' }: {
 }
 
 export function CustomerTable({ customers, onDelete }: CustomerTableProps) {
+  const navigate = useNavigate()
+
   if (customers.length === 0) {
     return (
       <tr>
@@ -99,8 +101,9 @@ export function CustomerTable({ customers, onDelete }: CustomerTableProps) {
       {customers.map((customer, index) => (
         <tr
           key={customer.id}
-          className="border-b border-[var(--color-border)]/50 hover:bg-[var(--color-muted)]/30 transition-colors duration-200 group"
+          className="border-b border-[var(--color-border)]/50 hover:bg-[var(--color-muted)]/30 transition-colors duration-200 group cursor-pointer"
           style={{ animationDelay: `${index * 30}ms` }}
+          onClick={() => navigate(`/customer/${customer.id}/detail`)}
         >
           <td className="px-6 py-4">
             <div className="flex items-center gap-3">
@@ -128,7 +131,10 @@ export function CustomerTable({ customers, onDelete }: CustomerTableProps) {
             <PaymentBadge valid={customer.paymentValid} />
           </td>
           <td className="px-6 py-4">
-            <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div
+              className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
               <Link to={`/customer/${customer.id}`}>
                 <ActionButton
                   onClick={() => {}}

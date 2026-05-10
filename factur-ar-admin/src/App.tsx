@@ -7,6 +7,7 @@ import { useSessionTimeout } from './hooks/use-session-timeout'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import CustomerForm from './pages/CustomerForm'
+import CustomerDetail from './pages/CustomerDetail'
 
 // ─── Auth listener (inicializa la suscripción de Firebase / mock) ──────────────
 
@@ -82,6 +83,16 @@ export default function App() {
               <ProtectedRoute>
                 <SessionTimeoutWrapper>
                   <CustomerForm />
+                </SessionTimeoutWrapper>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/customer/:id/detail"
+            element={
+              <ProtectedRoute>
+                <SessionTimeoutWrapper>
+                  <CustomerDetail />
                 </SessionTimeoutWrapper>
               </ProtectedRoute>
             }
