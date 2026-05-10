@@ -1,0 +1,327 @@
+/* === Google Fonts: DM Sans + Playfair Display === */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* === Pastel Light Theme (Default) === */
+@theme {
+  /* Colors - Pastel Light */
+  --color-background: #FDFCF8;
+  --color-foreground: #1F2937;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1F2937;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1F2937;
+  --color-primary: #7C3AED;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #A78BFA;
+  --color-secondary-foreground: #1F2937;
+  --color-muted: #F3F4F6;
+  --color-muted-foreground: #6B7280;
+  --color-accent: #10B981;
+  --color-accent-foreground: #FFFFFF;
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #E5E7EB;
+  --color-input: #E5E7EB;
+  --color-ring: #7C3AED;
+
+  /* Pastel accent colors */
+  --color-pastel-indigo: #7C3AED;
+  --color-pastel-lavender: #A78BFA;
+  --color-pastel-mint: #10B981;
+  --color-pastel-peach: #F59E0B;
+  --color-pastel-rose: #EC4899;
+  --color-pastel-sky: #0EA5E9;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* Shadows - más elaborados */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+}
+
+/* === Dark Theme === */
+[data-theme="dark"] {
+  --color-background: #0F0F12;
+  --color-foreground: #F1F5F9;
+  --color-card: #1A1A1F;
+  --color-card-foreground: #F1F5F9;
+  --color-popover: #1A1A1F;
+  --color-popover-foreground: #F1F5F9;
+  --color-primary: #A78BFA;
+  --color-primary-foreground: #0F0F12;
+  --color-secondary: #818CF8;
+  --color-secondary-foreground: #0F0F12;
+  --color-muted: #27272A;
+  --color-muted-foreground: #A1A1AA;
+  --color-accent: #34D399;
+  --color-accent-foreground: #0F0F12;
+  --color-destructive: #F87171;
+  --color-destructive-foreground: #0F0F12;
+  --color-border: #3F3F46;
+  --color-input: #3F3F46;
+  --color-ring: #A78BFA;
+
+  /* Dark pastels */
+  --color-pastel-indigo: #A78BFA;
+  --color-pastel-lavender: #818CF8;
+  --color-pastel-mint: #34D399;
+  --color-pastel-peach: #FBBF24;
+  --color-pastel-rose: #F472B6;
+  --color-pastel-sky: #38BDF8;
+
+  /* Dark shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* === Base Styles === */
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* === Glass Effect === */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(26, 26, 31, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* === Tech-Future Background === */
+
+/* Animated grid lines keyframe */
+@keyframes gridShift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 60px; }
+}
+
+@keyframes scanLine {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* Base layer: dark grid on pale background */
+.bg-mesh {
+  position: relative;
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridShift 8s linear infinite;
+}
+
+/* Glow halos at fixed positions */
+.bg-mesh::before {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 20%,  rgba(124, 58, 237, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 85% 75%,  rgba(14, 165, 233, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 100%, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+  animation: glowPulse 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Scan line overlay */
+.bg-mesh::after {
+  content: '';
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(124, 58, 237, 0.04) 50%,
+    transparent 100%
+  );
+  animation: scanLine 10s linear infinite;
+  z-index: 0;
+}
+
+/* Children need z-index above pseudo-elements */
+.bg-mesh > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark theme variant — darker grid, stronger glow */
+[data-theme="dark"] .bg-mesh {
+  background-color: var(--color-background);
+  background-image:
+    linear-gradient(rgba(167, 139, 250, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(167, 139, 250, 0.07) 1px, transparent 1px);
+}
+
+[data-theme="dark"] .bg-mesh::before {
+  background:
+    radial-gradient(ellipse 60% 40% at 15% 20%,  rgba(167, 139, 250, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 85% 75%,  rgba(56, 189, 248, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 100%, rgba(52, 211, 153, 0.08) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .bg-mesh::after {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(167, 139, 250, 0.06) 50%,
+    transparent 100%
+  );
+}
+
+/* Remove old bg-dots — no longer needed */
+.bg-dots {}
+
+/* === Focus States === */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-ring);
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted-foreground);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-foreground);
+}
+
+/* === Reset === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* === Utility: Gradient Text === */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
